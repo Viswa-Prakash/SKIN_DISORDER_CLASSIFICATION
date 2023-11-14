@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 
 # loading the saved models
 
-skin_disorder_classification_model = pickle.load(open('skin_disorder_classification_model.sav', 'rb'))
+skin_disorder_classification_model = pickle.load(open('skin_disorder_classification_model.pkl', 'rb'))
   
 # page title
 st.title('Skin Disorder Classification ML Model')
