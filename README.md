@@ -45,7 +45,8 @@ Histopathological Attributes: (take values 0, 1, 2, 3)
 33: band-like infiltrate
 34: Age (linear)
 
-
+https://skindisorderclassification.streamlit.app/
+Click on the above link for Skin Disorder Classification ML model 
 
 
 
