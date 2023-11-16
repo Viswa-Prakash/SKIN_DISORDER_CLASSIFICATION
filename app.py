@@ -11,17 +11,23 @@ skin_disorder_classification_model = pickle.load(open('skin_disorder_classificat
 # page title
 st.title('Skin Disorder Classification ML Model')
 
-st.markdown(""" The differential diagnosis of erythemato-squamous diseases is a real problem in dermatology. They all share the clinical features of erythema and scaling, with very little differences. 
+st.markdown(""" The differential diagnosis of erythemato-squamous diseases is a real problem in dermatology. They all share the clinical features of erythema and scaling, with very little differences.""") 
 
-The diseases in this group are: 
-- psoriasis, 
-- seboreic dermatitis,
-- lichen planus,
-- pityriasis rosea,
-- cronic dermatitis and 
-- pityriasis rubra pilaris
-        
-Usually a biopsy is necessary for the diagnosis but unfortunately these diseases share many histopathological features as well. Another difficulty for the differential diagnosis is that a disease may show the features of another disease at the beginning stage and may have the characteristic features at the following stages. Patients were first evaluated clinically with 12 features. Afterwards, skin samples were taken for the evaluation of 22 histopathological features. The values of the histopathological features are determined by an analysis of the samples under a microscope.
+st.markdown("""The diseases in this group are:""")
+
+data = [
+    {"name": "psoriasis", "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Psoriasis_on_back1.jpg/300px-Psoriasis_on_back1.jpg"},
+    {"name": "seboreic dermatitis", "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Sequeira_Plate_18.jpg/300px-Sequeira_Plate_18.jpg"},
+    {"name": "lichen planus", "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Lichen_Planus_%282%29.JPG/300px-Lichen_Planus_%282%29.JPG"},
+    {"name": "pityriasis rosea", "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Pityriasisrosa.png/300px-Pityriasisrosa.png"},
+    {"name": "cronic dermatitis", "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Dermatitis2015.jpg/300px-Dermatitis2015.jpg"},
+    {"name": "pityriasis rubra pilaris", "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Plate_XXXIII%2C_Pityriasis_rubra_pilaris%2C_Crocker_1896_Wellcome_L0074323.jpg/300px-Plate_XXXIII%2C_Pityriasis_rubra_pilaris%2C_Crocker_1896_Wellcome_L0074323.jpg"},
+]
+
+for entry in data:
+    st.write(f"[{entry['name']}]({entry['image_url']})")
+
+st.markdown("""Usually a biopsy is necessary for the diagnosis but unfortunately these diseases share many histopathological features as well. Another difficulty for the differential diagnosis is that a disease may show the features of another disease at the beginning stage and may have the characteristic features at the following stages. Patients were first evaluated clinically with 12 features. Afterwards, skin samples were taken for the evaluation of 22 histopathological features. The values of the histopathological features are determined by an analysis of the samples under a microscope.
 
 **Clinical Attributes:**
 - Erythema - A skin reaction that can be triggered by an infection or some medicines.
@@ -63,8 +69,10 @@ Usually a biopsy is necessary for the diagnosis but unfortunately these diseases
         
 """)
        
-    
-# getting the input data from the user
+# getting the input data from the user  
+  
+st.markdown('Fill the below information from the clinical test to check the type of skin disorder:')
+
 col1, col2, col3 = st.columns(3)
     
 with col1:
@@ -503,5 +511,5 @@ if st.button('Skin Disorder'):
   
     prediction = skin_disorder_classification_model.predict([[erythema,scaling,definite_borders,itching,koebner_phenomenon,polygonal_papules,follicular_papules,oral_mucosal_involvement,knee_and_elbow_involvement,scalp_involvement,melanin_incontinence,eosinophils_in_the_infiltrate,PNL_infiltrate,fibrosis_of_the_papillary_dermis,exocytosis,acanthosis,hyperkeratosis,parakeratosis,clubbing_of_the_rete_ridges,elongation_of_the_rete_ridges,thinning_of_the_suprapapillary_epidermis,spongiform_pustule,munro_microabcess,focal_hypergranulosis,disappearance_of_the_granular_layer,vacuolisation_and_damage_of_basal_layer,spongiosis,saw_tooth_appearance_of_retes,follicular_horn_plug,perifollicular_parakeratosis,inflammatory_monoluclear_inflitrate,band_like_infiltrate,Age,family_history_Not_Observed,family_history_Observed]])
 
-    st.write("Skin Disorder:", prediction[0])
+    st.write("Skin Disorder Result:", prediction[0])
 
